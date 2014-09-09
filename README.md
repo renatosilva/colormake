@@ -4,7 +4,7 @@ ColorMake will colorize output of Make and GCC, highlighting errors and warnings
 so you can notice them more easily. ColorMake is implemented in Bash and
 requires a terminal with support for ANSI escape sequences.
 
-![Screenshot](https://raw.githubusercontent.com/renatosilva/colormake/master/colormake.png)
+![Screenshot](https://github.com/renatosilva/colormake/raw/master/colormake.png)
 
 ## Usage
 
