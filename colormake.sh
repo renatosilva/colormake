@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Colored Make 2014.9.7
+# Colored Make 2014.9.13
 # Copyright (c) 2014 Renato Silva
 # GNU GPLv2 licensed
 
@@ -28,8 +28,8 @@ fi
 normal="\e[0m"
 
 # Errors, warnings, notes and compiler recipes
-error="s/^(.*error:)/$(printf $red)\\1$(printf $normal)/i"
-warning="s/^(.*warning:)/$(printf $yellow)\\1$(printf $normal)/"
+error="s/(^error|^.*[^a-z]error:)/$(printf $red)\\1$(printf $normal)/i"
+warning="s/(^warning|^.*[^a-z]warning:)/$(printf $yellow)\\1$(printf $normal)/i"
 make="s/^make(\[[0-9]+\])?:/$(printf $blue)make\\1:$(printf $normal)/"
 compiler_recipe="s/^(gcc(.exe)? .*)/$(printf $gray)\\1$(printf $normal)/"
 
