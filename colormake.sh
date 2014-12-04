@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Colored Make 2014.9.13
+# Colored Make 2014.12.3
 # Copyright (c) 2014 Renato Silva
 # GNU GPLv2 licensed
 
@@ -34,9 +34,9 @@ make="s/^make(\[[0-9]+\])?:/$(printf $blue)make\\1:$(printf $normal)/"
 compiler_recipe="s/^(gcc(.exe)? .*)/$(printf $gray)\\1$(printf $normal)/"
 
 if [[ $(uname -or) != 1.*Msys ]]; then
-    command make "$@" 2> >(sed -E -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe") \
-                       > >(sed -E -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe")
+    command make "$@" 2> >(sed -r -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe") \
+                       > >(sed -r -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe")
 else
     # MinGW MSYS does not support process substitution
-    command make "$@" 2>&1 | sed -E -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe"
+    command make "$@" 2>&1 | sed -r -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe"
 fi
