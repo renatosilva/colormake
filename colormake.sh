@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Colored Make 2014.12.3
+# Colored Make 2015.2.11
 # Copyright (c) 2014 Renato Silva
 # GNU GPLv2 licensed
 
