@@ -21,4 +21,4 @@ alias clang='COLORMAKE_COMMAND=clang colormake'
 ## License and copyright
 
 Copyright (c) 2014 Renato Silva.
-Licensed under the terms of the GNU GPL version 2.
+Licensed under the terms of the [3-clause BSD license](LICENSE).

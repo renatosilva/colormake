@@ -2,7 +2,7 @@
 
 # Colored Make 2016.1.21
 # Copyright (c) 2014 Renato Silva
-# GNU GPLv2 licensed
+# Licensed under BSD
 
 # Enable 256 colors for MinTTY in MSYS2
 if [[ "$MSYSCON" = mintty* && "$TERM" = *256color* ]]; then
