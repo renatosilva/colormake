@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# Colored Make 2015.2.11
+# Colored Make 2016.1.21
 # Copyright (c) 2014 Renato Silva
 # GNU GPLv2 licensed
-
-# This script will colorize output of make and GCC so it becomes easier to
-# notice the errors and warnings in the complex build output.
 
 # Enable 256 colors for MinTTY in MSYS2
 if [[ "$MSYSCON" = mintty* && "$TERM" = *256color* ]]; then
@@ -31,12 +28,12 @@ normal="\e[0m"
 error="s/(^error|^.*[^a-z]error:)/$(printf $red)\\1$(printf $normal)/i"
 warning="s/(^warning|^.*[^a-z]warning:)/$(printf $yellow)\\1$(printf $normal)/i"
 make="s/^make(\[[0-9]+\])?:/$(printf $blue)make\\1:$(printf $normal)/"
-compiler_recipe="s/^(gcc(.exe)? .*)/$(printf $gray)\\1$(printf $normal)/"
+compiler_recipe="s/^((gcc|g\+\+|clang)(.exe)? .*)/$(printf $gray)\\1$(printf $normal)/"
 
 if [[ $(uname -or) != 1.*Msys ]]; then
-    command make "$@" 2> >(sed -r -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe") \
-                       > >(sed -r -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe")
+    command "${COLORMAKE_COMMAND:-make}" "$@" 2> >(sed -ru -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe") \
+                                               > >(sed -ru -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe")
 else
     # MinGW MSYS does not support process substitution
-    command make "$@" 2>&1 | sed -r -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe"
+    command "${COLORMAKE_COMMAND:-make}" "$@" 2>&1 | sed -ru -e "$warning" -e "$error" -e "$make" -e "$compiler_recipe"
 fi

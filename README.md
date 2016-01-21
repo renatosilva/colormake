@@ -1,16 +1,22 @@
 # ColorMake
 
-ColorMake will colorize output of Make and GCC, highlighting errors and warnings
-so you can notice them more easily. ColorMake is implemented in Bash and
-requires a terminal with support for ANSI escape sequences.
+ColorMake colorizes build output, highlighting errors and warnings so you can
+notice them more easily. It works with Make, GCC, Clang and other programs with
+similar output format. ColorMake is implemented in Bash and requires a terminal
+with support for ANSI escape sequences.
 
 ![Screenshot](https://github.com/renatosilva/colormake/raw/master/colormake.png)
 
 ## Usage
 
-Just use the script instead of make, passing the arguments as usual. You can
-also have `make` aliased to `colormake` for instance. Just make sure to not
-rename it to `make` as that would cause recursive calls.
+Just call colormake instead of make, passing the arguments as usual. You can
+also configure bash aliases, as well as colorize output of other programs:
+
+```bash
+alias make='colormake'
+alias gcc='COLORMAKE_COMMAND=gcc colormake'
+alias clang='COLORMAKE_COMMAND=clang colormake'
+```
 
 ## License and copyright
 
